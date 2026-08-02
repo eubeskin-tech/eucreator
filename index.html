@@ -149,7 +149,6 @@ textarea{min-height:110px;resize:vertical;line-height:1.6}
 .done{text-align:center;padding:30px 0 10px}
 .done h3{font-size:34px;margin-bottom:14px}
 .done p{font-size:16px;font-weight:300;line-height:1.7;max-width:46ch;margin:0 auto}
-.debug{margin-top:30px;border:1px dashed rgba(98,21,19,.35);padding:18px;font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.6;text-align:left;white-space:pre-wrap;opacity:.8}
 
 /* ---------- FAQ ---------- */
 .faq{background:var(--offwhite);padding-bottom:110px}
@@ -445,7 +444,6 @@ textarea{min-height:110px;resize:vertical;line-height:1.6}
           <div class="done">
             <h3>Candidatura recebida.</h3>
             <p>A gente lê tudo à mão, uma por uma. A resposta chega no seu WhatsApp em até 10 dias, inclusive se for não. Enquanto isso, o melhor que você pode fazer é continuar criando do jeito que você já cria.</p>
-            <div class="debug" id="payload"></div>
           </div>
         </div>
 
@@ -459,7 +457,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.6}
    Trocar pela URL do Apps Script quando publicar:
    const EUBE_ENDPOINT = "https://script.google.com/macros/s/SEU_ID/exec";
 ============================================== */
-const EUBE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwEVVnNsK3c-qL0iuzemzgeF6BEVRJKmpuuvYd0ml82ZU1ur7ivxhqauqQDE5VSzrQO/exec";
+const EUBE_ENDPOINT = "";
 
 let eubeTela = 1;
 let eubeIP = 'não capturado';
@@ -490,9 +488,24 @@ function mostra(n){
   document.querySelectorAll('.tela').forEach(t=>t.classList.remove('on'));
   document.querySelector('.tela[data-t="'+n+'"]').classList.add('on');
   document.getElementById('bar').style.width=(n*20)+'%';
-  document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
   eubeTela=n;
+  if(window.self!==window.top){
+    parent.postMessage({eube:'scroll'},'*');
+    setTimeout(eubeAltura,120);
+  }else{
+    document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
+  }
 }
+
+/* Comunicação com o Shopify quando a página roda dentro de iframe */
+function eubeAltura(){
+  if(window.self===window.top) return;
+  const h=document.body.scrollHeight;
+  parent.postMessage({eube:'altura',altura:h},'*');
+}
+window.addEventListener('load',()=>{eubeAltura();setTimeout(eubeAltura,600);});
+window.addEventListener('resize',eubeAltura);
+setInterval(eubeAltura,1200);
 function volta(n){mostra(n-1);}
 
 function prox(n){
@@ -560,7 +573,6 @@ function enviar(){
   if(EUBE_ENDPOINT){
     fetch(EUBE_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)});
   }
-  document.getElementById('payload').textContent='SIMULAÇÃO. Isto é o que vai para o Google Sheets:\n\n'+JSON.stringify(d,null,2);
   mostra(6);
   document.getElementById('bar').style.width='100%';
 }
