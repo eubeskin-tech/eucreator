@@ -497,15 +497,28 @@ function mostra(n){
   }
 }
 
-/* Comunicação com o Shopify quando a página roda dentro de iframe */
+/* Comunicação com o Shopify quando a página roda dentro de iframe.
+   Mede o fundo real do conteúdo. Não usar body.scrollHeight: ele nunca é
+   menor que a altura do próprio iframe e cria um loop de crescimento. */
+let eubeUltimaAltura = 0;
 function eubeAltura(){
   if(window.self===window.top) return;
-  const h=document.body.scrollHeight;
-  parent.postMessage({eube:'altura',altura:h},'*');
+  let fundo = 0;
+  document.body.children.forEach ? null : null;
+  Array.prototype.forEach.call(document.body.children, function(el){
+    const r = el.getBoundingClientRect();
+    const b = r.bottom + (window.scrollY || window.pageYOffset || 0);
+    if(b > fundo) fundo = b;
+  });
+  const h = Math.ceil(fundo);
+  if(h > 200 && Math.abs(h - eubeUltimaAltura) > 4){
+    eubeUltimaAltura = h;
+    parent.postMessage({eube:'altura',altura:h},'*');
+  }
 }
-window.addEventListener('load',()=>{eubeAltura();setTimeout(eubeAltura,600);});
+window.addEventListener('load',function(){eubeAltura();setTimeout(eubeAltura,400);setTimeout(eubeAltura,1200);});
 window.addEventListener('resize',eubeAltura);
-setInterval(eubeAltura,1200);
+setInterval(eubeAltura,1000);
 function volta(n){mostra(n-1);}
 
 function prox(n){
