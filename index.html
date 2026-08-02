@@ -490,10 +490,8 @@ function mostra(n){
   document.getElementById('bar').style.width=(n*20)+'%';
   eubeTela=n;
   if(window.self!==window.top){
-    const card=document.querySelector('.form-card');
-    const topo=card.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
-    parent.postMessage({eube:'scroll',offset:Math.round(topo)},'*');
-    setTimeout(eubeAltura,120);
+    eubeEtapa();
+    setTimeout(eubeEtapa,80);
   }else{
     document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
   }
@@ -503,18 +501,31 @@ function mostra(n){
    Mede o fundo real do conteúdo. Não usar body.scrollHeight: ele nunca é
    menor que a altura do próprio iframe e cria um loop de crescimento. */
 let eubeUltimaAltura = 0;
+
+/* Altura e posição do formulário na mesma mensagem, para o Shopify
+   redimensionar antes de rolar. Rolar antes de redimensionar faz o
+   navegador reposicionar a página sozinho quando o iframe encolhe. */
+function eubeFundo(){
+  let fundo=0;
+  Array.prototype.forEach.call(document.body.children,function(el){
+    const b=el.getBoundingClientRect().bottom+(window.scrollY||window.pageYOffset||0);
+    if(b>fundo) fundo=b;
+  });
+  return Math.ceil(fundo);
+}
+function eubeEtapa(){
+  if(window.self===window.top) return;
+  const card=document.querySelector('.form-card');
+  const topo=Math.round(card.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0));
+  const h=eubeFundo();
+  eubeUltimaAltura=h;
+  parent.postMessage({eube:'etapa',altura:h,offset:topo},'*');
+}
 function eubeAltura(){
   if(window.self===window.top) return;
-  let fundo = 0;
-  document.body.children.forEach ? null : null;
-  Array.prototype.forEach.call(document.body.children, function(el){
-    const r = el.getBoundingClientRect();
-    const b = r.bottom + (window.scrollY || window.pageYOffset || 0);
-    if(b > fundo) fundo = b;
-  });
-  const h = Math.ceil(fundo);
-  if(h > 200 && Math.abs(h - eubeUltimaAltura) > 4){
-    eubeUltimaAltura = h;
+  const h=eubeFundo();
+  if(h>200 && Math.abs(h-eubeUltimaAltura)>4){
+    eubeUltimaAltura=h;
     parent.postMessage({eube:'altura',altura:h},'*');
   }
 }
