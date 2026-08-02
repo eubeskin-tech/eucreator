@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EUCREATOR · EUBE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--vinho:#621513;--offwhite:#EDEBDC;--terracota:#F4633A;--agua:#A4C9CB;--max:1280px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--offwhite);color:var(--vinho);font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 48px}
+h1,h2,h3{font-family:'Sulphur Point',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.li{font-weight:300;font-style:italic;display:block}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;opacity:.75}
+.lead{font-size:18px;line-height:1.7;font-weight:300}
+section{padding:96px 0}
+.rule{height:1px;background:rgba(98,21,19,.2);margin:34px 0}
+.rule.claro{background:rgba(237,235,220,.25)}
+.dark{background:var(--vinho);color:var(--offwhite)}
+.dark .eyebrow{color:var(--agua);opacity:1}
+.light{background:var(--offwhite)}
+.aqua{background:var(--agua);color:var(--vinho)}
+.cta{display:inline-block;background:var(--terracota);color:#fff;font-family:'Jost',sans-serif;font-weight:500;font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:18px 38px;border:0;border-radius:0;text-decoration:none;cursor:pointer;transition:.2s}
+.cta:hover{opacity:.9;transform:translateY(-1px)}
+.ph{aspect-ratio:4/5;position:relative;display:block;background-color:#b9a894;background-image:url("https://eubeskin-tech.github.io/eucreator/images/EUBE_EUCREATOR_Criadora.webp");background-size:cover;background-position:center center;background-repeat:no-repeat}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+
+/* HERO */
+.hero{padding:0}
+/* ===== IMAGENS. Repositorio: eubeskin-tech/eucreator, pasta images ===== */
+.hero-img{height:60vh;min-height:400px;width:100%;position:relative;overflow:hidden;background-image:url("https://eubeskin-tech.github.io/eucreator/images/EUBE_EUCREATOR_Hero_Desktop.webp");background-size:cover;background-position:center 30%;background-repeat:no-repeat;background-color:var(--vinho)}
+.hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(98,21,19,.15) 0%,rgba(98,21,19,.55) 100%)}
+.hero-over{position:absolute;inset:0;display:flex;align-items:flex-end;z-index:2}
+.hero-over .wrap{width:100%;padding-bottom:56px}
+.hero-over p{font-family:'Sulphur Point',sans-serif;font-weight:700;font-size:clamp(26px,3.6vw,46px);line-height:1.1;color:var(--offwhite);max-width:18ch;letter-spacing:-.01em}
+.hero-body{padding-top:64px;padding-bottom:88px}
+.hero h1{font-size:clamp(36px,5.4vw,68px);margin:22px 0 0;max-width:20ch}
+.hero .lead{max-width:56ch;margin-top:26px;opacity:.9}
+.hero-meta{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap;align-items:center}
+.meta-item{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;border-left:1px solid rgba(237,235,220,.35);padding-left:14px}
+
+/* TITULOS DE SECAO */
+.h-sec{font-size:clamp(28px,3.4vw,44px);max-width:20ch}
+.p-sec{margin-top:22px;font-size:17px;line-height:1.75;font-weight:300;max-width:52ch}
+
+/* PROPOSTA 4 PONTOS */
+.quatro{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(237,235,220,.22);margin-top:52px;border:1px solid rgba(237,235,220,.22)}
+.qcell{background:var(--vinho);padding:32px 34px 36px}
+.qcell h4{font-family:'Sulphur Point',sans-serif;font-size:22px;margin-bottom:10px}
+.qcell p{font-size:15px;line-height:1.65;font-weight:300;opacity:.88}
+
+/* PARA QUEM */
+.cols{display:grid;grid-template-columns:1fr 1fr;margin-top:52px;border-top:1px solid rgba(98,21,19,.3)}
+.col{padding:34px 40px 38px}
+.col:first-child{padding-left:0;border-right:1px solid rgba(98,21,19,.2)}
+.col:last-child{padding-right:0}
+.col h3{font-family:'Jost',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:500;margin-bottom:22px}
+.col ul{list-style:none}
+.col li{font-size:16px;font-weight:300;line-height:1.6;padding:14px 0 14px 26px;position:relative;border-bottom:1px solid rgba(98,21,19,.15)}
+.col li::before{position:absolute;left:0;top:14px;font-size:14px}
+.col.sim li::before{content:"·"}
+.col.nao li::before{content:"×";color:var(--vinho);opacity:.55}
+.col.nao li{opacity:.72}
+
+/* ETAPAS */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px;border-top:1px solid rgba(98,21,19,.25)}
+.step{padding:28px 30px 32px;border-right:1px solid rgba(98,21,19,.18)}
+.step:first-child{padding-left:0}
+.step:last-child{border-right:0;padding-right:0}
+.step .n{font-family:'Sulphur Point',sans-serif;font-size:13px;letter-spacing:.2em;opacity:.6;display:block;margin-bottom:18px}
+.step h4{font-family:'Sulphur Point',sans-serif;font-size:21px;margin-bottom:10px}
+.step p{font-size:14px;line-height:1.6;font-weight:300;opacity:.85}
+
+/* MARCOS + PROTOCOLO */
+.marcos{display:grid;grid-template-columns:repeat(3,1fr);margin-top:52px;border-top:1px solid rgba(237,235,220,.25)}
+.marco{padding:30px 34px 34px;border-right:1px solid rgba(237,235,220,.18)}
+.marco:first-child{padding-left:0}
+.marco:last-child{border-right:0;padding-right:0}
+.marco .d{font-family:'Sulphur Point',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--agua);display:block;margin-bottom:16px}
+.marco h4{font-family:'Sulphur Point',sans-serif;font-size:22px;margin-bottom:10px}
+.marco p{font-size:15px;line-height:1.65;font-weight:300;opacity:.88}
+.proto{margin-top:52px;border:1px solid rgba(237,235,220,.28);padding:34px 38px 38px;max-width:760px}
+.proto h3{font-size:24px;margin-bottom:12px}
+.proto p{font-size:15px;font-weight:300;line-height:1.7;opacity:.88;max-width:56ch}
+.proto ul{list-style:none;margin-top:22px}
+.proto li{font-size:15px;font-weight:300;padding:11px 0 11px 24px;position:relative;border-bottom:1px solid rgba(237,235,220,.12)}
+.proto li:last-child{border-bottom:0}
+.proto li::before{content:"·";position:absolute;left:4px;color:var(--agua)}
+
+/* CONTRAPARTIDA */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(98,21,19,.18);margin-top:52px;border:1px solid rgba(98,21,19,.18)}
+.cell{background:var(--offwhite);padding:34px 30px 38px}
+.cell h4{font-family:'Sulphur Point',sans-serif;font-size:21px;margin-bottom:10px}
+.cell p{font-size:15px;line-height:1.65;font-weight:300}
+.tbd{color:var(--terracota);font-weight:500}
+.nota{margin-top:26px;font-size:13px;font-weight:300;opacity:.7;max-width:60ch}
+
+/* FAIXA FINAL */
+.faixa{padding:0;display:grid;grid-template-columns:1fr 1fr}
+.faixa .ph{aspect-ratio:auto;height:100%;min-height:460px}
+.faixa .txt{background:var(--vinho);color:var(--offwhite);display:flex;flex-direction:column;justify-content:center;padding:72px 64px}
+.faixa .txt h2{font-size:clamp(30px,3.2vw,46px);max-width:14ch}
+.faixa .txt p{margin-top:20px;font-size:16px;line-height:1.75;font-weight:300;max-width:44ch;opacity:.9}
+.faixa .cta{margin-top:34px;align-self:flex-start}
+/* ---------- FORM ---------- */
+.form-sec{background:var(--vinho);color:var(--offwhite);padding:96px 0 110px}
+.form-head{max-width:60ch}
+.form-head h2{font-size:clamp(30px,3.6vw,48px)}
+.form-head h2 .li{font-weight:300;font-style:italic;display:block}
+.form-head p{margin-top:18px;font-size:16px;font-weight:300;opacity:.85;line-height:1.7}
+.form-card{background:var(--offwhite);color:var(--vinho);margin-top:44px;padding:0;max-width:860px}
+.prog{height:3px;background:rgba(98,21,19,.15)}
+.prog i{display:block;height:100%;background:var(--terracota);width:20%;transition:width .35s ease}
+.form-inner{padding:44px 48px 48px}
+.tela{display:none;animation:fade .35s ease}
+.tela.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tela-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.tela-h .n{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.tela h3{font-family:'Sulphur Point',sans-serif;font-size:30px;margin-bottom:6px}
+.tela .sub{font-size:14px;font-weight:300;opacity:.75;margin-bottom:30px;line-height:1.6}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:13px;letter-spacing:.06em;margin-bottom:8px;font-weight:400}
+.field .hint{font-size:12px;opacity:.6;font-weight:300;margin-top:6px}
+input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
+  width:100%;background:transparent;border:1px solid rgba(98,21,19,.28);border-radius:0;padding:13px 14px;
+  font-family:'Jost',sans-serif;font-size:15px;color:var(--vinho);outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--terracota)}
+textarea{min-height:110px;resize:vertical;line-height:1.6}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.opts{display:grid;gap:9px}
+.opt{border:1px solid rgba(98,21,19,.28);padding:13px 16px;font-size:15px;font-weight:300;cursor:pointer;display:flex;align-items:center;gap:12px;transition:.18s}
+.opt:hover{border-color:var(--vinho)}
+.opt input{accent-color:var(--terracota);width:15px;height:15px}
+.opt.sel{border-color:var(--vinho);background:rgba(98,21,19,.06)}
+.opts.two{grid-template-columns:1fr 1fr}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:34px;padding-top:24px;border-top:1px solid rgba(98,21,19,.18)}
+.btn-ghost{background:none;border:0;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--vinho);opacity:.6;cursor:pointer}
+.btn-ghost:hover{opacity:1}
+.err{color:var(--terracota);font-size:13px;margin-top:14px;display:none}
+.err.on{display:block}
+.dica{border-left:3px solid var(--terracota);padding:10px 0 10px 18px;font-size:14px;font-weight:300;line-height:1.6;margin:26px 0 4px;opacity:.85}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;font-weight:300;line-height:1.6;margin-bottom:16px}
+.consent input{margin-top:4px;accent-color:var(--terracota)}
+.done{text-align:center;padding:30px 0 10px}
+.done h3{font-size:34px;margin-bottom:14px}
+.done p{font-size:16px;font-weight:300;line-height:1.7;max-width:46ch;margin:0 auto}
+.debug{margin-top:30px;border:1px dashed rgba(98,21,19,.35);padding:18px;font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.6;text-align:left;white-space:pre-wrap;opacity:.8}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--offwhite);padding-bottom:110px}
+.faq h2{font-size:clamp(26px,3vw,38px);margin-bottom:36px}
+.q{border-top:1px solid rgba(98,21,19,.2);padding:22px 0;cursor:pointer}
+.q:last-child{border-bottom:1px solid rgba(98,21,19,.2)}
+.q h4{font-family:'Jost',sans-serif;font-size:17px;font-weight:400;display:flex;justify-content:space-between;gap:20px}
+.q p{font-size:15px;font-weight:300;line-height:1.7;max-width:66ch;margin-top:14px;display:none}
+.q.open p{display:block}
+.q .sig{color:var(--terracota);font-weight:300}
+
+
+/* FAQ */
+.faq{padding-bottom:110px}
+.q{border-top:1px solid rgba(98,21,19,.2);padding:22px 0;cursor:pointer}
+.q:last-child{border-bottom:1px solid rgba(98,21,19,.2)}
+.q h4{font-family:'Jost',sans-serif;font-size:17px;font-weight:400;display:flex;justify-content:space-between;gap:20px}
+.q p{font-size:15px;font-weight:300;line-height:1.7;max-width:66ch;margin-top:14px;display:none}
+.q.open p{display:block}
+.q .sig{color:var(--terracota);font-weight:300}
+.faq .h-sec{margin-bottom:36px}
+
+@media(max-width:900px){
+  .wrap{padding:0 20px}
+  section{padding:64px 0}
+  .split,.cols,.faixa,.row2,.opts.two,.quatro,.grid3,.marcos{grid-template-columns:1fr}
+  .split{gap:36px}
+  .col:first-child{border-right:0;border-bottom:1px solid rgba(98,21,19,.2)}
+  .col{padding:28px 0}
+  .steps,.trio{grid-template-columns:1fr}
+  .trio div,.trio div:first-child,.trio div:last-child{border-right:0;border-bottom:1px solid rgba(98,21,19,.15);padding:16px 0}
+  .step,.marco{border-right:0;border-bottom:1px solid rgba(98,21,19,.18);padding:24px 0}
+  .marco{border-bottom-color:rgba(237,235,220,.18)}
+  .proto{padding:26px 22px 28px}
+  .faixa .txt{padding:48px 20px}
+  .form-inner{padding:30px 22px 34px}
+  .hero-img{height:auto;aspect-ratio:1080/1400;min-height:0;background-image:url("https://eubeskin-tech.github.io/eucreator/images/EUBE_EUCREATOR_Hero_Mobile.webp");background-position:center center}
+  .hero-body{padding-top:44px;padding-bottom:64px}
+  .hero-over .wrap{padding-bottom:38px}
+}
+
+.ico{width:44px;height:44px;margin-bottom:22px;color:var(--agua)}
+.ico svg{width:100%;height:100%;display:block}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-top:30px;border-top:1px solid rgba(98,21,19,.25)}
+.trio div{padding:18px 24px;border-right:1px solid rgba(98,21,19,.15)}
+.trio div:first-child{padding-left:0}
+.trio div:last-child{padding-right:0}
+.trio div:last-child{border-right:0}
+.trio b{font-family:'Sulphur Point',sans-serif;font-size:17px;font-weight:700;display:block;margin-bottom:5px}
+.trio p{font-size:14px;font-weight:300;line-height:1.5;opacity:.8}
+.destaque{margin-top:34px;border-left:3px solid var(--terracota);padding:6px 0 6px 20px;font-size:19px;font-weight:300;line-height:1.5;font-style:italic;max-width:44ch}
+.hero .kicker{margin-top:18px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--agua)}
+.lista{margin-top:34px;border-top:1px solid rgba(98,21,19,.3);max-width:900px}
+.lista ul{list-style:none}
+.lista li b{font-family:'Sulphur Point',sans-serif;font-weight:700}
+.lista li{font-size:17px;font-weight:300;line-height:1.6;padding:22px 0 22px 40px;position:relative;border-bottom:1px solid rgba(98,21,19,.18)}
+.lista li::before{content:"";position:absolute;left:0;top:29px;width:9px;height:9px;background:var(--terracota)}
+.lista li::after{content:"";position:absolute;left:4px;top:33px;width:16px;height:1px;background:rgba(98,21,19,.35)}
+.faixa .txt h2 .li{font-size:.72em}
+
+</style>
+</head>
+<body>
+
+<!-- ============ 1. HERO ============ -->
+<header class="hero dark">
+  <div class="hero-img">
+    <div class="hero-over"><div class="wrap"><p>O ecossistema onde a pele negra cria o futuro.</p></div></div>
+  </div>
+  <div class="wrap hero-body">
+    <span class="eyebrow">EUCREATOR · programa de criadores EUBE</span>
+    <h1>Muito além do cuidado com a pele.<span class="li">A construção de um ecossistema.</span></h1>
+    <p class="lead">A EUBE é uma marca de cuidados de alta performance para a pele negra.</p>
+    <p class="lead" style="margin-top:14px">O EUCREATOR é o nosso espaço de co-criação: um programa feito para conectar, valorizar e construir o futuro junto com criadores negros.</p>
+    <p class="kicker">O seu número de seguidores não é critério de entrada</p>
+    <div class="hero-meta">
+      <span class="meta-item">Turma 01 / 2026</span>
+      <span class="meta-item">Candidatura leva 5 a 8 minutos</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. O NOSSO PROPÓSITO ============ -->
+<section class="light">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">O nosso propósito</span>
+      <div class="rule"></div>
+      <h2 class="h-sec">A EUBE nasceu para transformar a forma como nos cuidamos<span class="li">e como nos conectamos.</span></h2>
+      <p class="p-sec">Acreditamos na força da pele negra, na ciência da alta performance e no poder de quem cria conteúdo com verdade.</p>
+      <p class="p-sec">Para nós, o valor de um criador não se mede pelo contador de seguidores. Se mede por três coisas:</p>
+      <div class="trio">
+        <div><b>Voz</b><p>O jeito de falar que só você tem.</p></div>
+        <div><b>Identidade</b><p>De onde você vem e o que você carrega.</p></div>
+        <div><b>Visão</b><p>O que você enxerga que a gente ainda não viu.</p></div>
+      </div>
+      <p class="destaque">O EUCREATOR não é apenas um programa de parceria. É um movimento para colocar criadores negros no centro do nosso ecossistema.</p>
+    </div>
+    <div class="ph"></div>
+  </div>
+</section>
+
+<!-- ============ 3. O QUE É O EUCREATOR ============ -->
+<section class="dark">
+  <div class="wrap">
+    <span class="eyebrow">O que é o EUCREATOR</span>
+    <div class="rule claro"></div>
+    <h2 class="h-sec">Aqui, a sua criação é ouvida,<span class="li">valorizada e reconhecida.</span></h2>
+    <p class="lead" style="max-width:56ch;opacity:.88;margin-top:22px">O EUCREATOR é a porta de entrada para você fazer parte da jornada da EUBE desde a base.</p>
+    <p class="destaque" style="border-left-color:var(--terracota);color:var(--offwhite)">Criar conteúdo de qualidade exige tempo, talento e dedicação. Por isso este espaço foi construído para que a co-criação aconteça de forma profissional, justa e sustentável para os dois lados.</p>
+    <div class="quatro">
+      <div class="qcell">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="15" cy="20" r="10"/><circle cx="25" cy="20" r="10"/></svg></div>
+        <h4>Co-criação e desenvolvimento</h4>
+        <p>Participe das discussões e teste lançamentos em primeira mão.<br><br>Você ajuda a moldar os novos produtos e campanhas da EUBE.</p>
+      </div>
+      <div class="qcell">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30 L15 22 L23 26 L34 12"/><circle cx="15" cy="22" r="2.2"/><circle cx="23" cy="26" r="2.2"/><path d="M28 12 h6 v6"/></svg></div>
+        <h4>Relações comerciais e monetização</h4>
+        <p>A gente reconhece o seu trabalho como criador.<br><br>O programa prevê parcerias remuneradas, comissionamento e ações pontuais, à medida que a marca e as campanhas evoluem.</p>
+      </div>
+      <div class="qcell">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="20" cy="20" r="3.4"/><circle cx="20" cy="7" r="2.6"/><circle cx="31" cy="26" r="2.6"/><circle cx="9" cy="26" r="2.6"/><path d="M20 10.6 V16.6 M22.9 21.8 L28.6 24.9 M17.1 21.8 L11.4 24.9"/></svg></div>
+        <h4>Pertencimento a um ecossistema</h4>
+        <p>Uma rede de criadores negros com a mesma busca por excelência, estética e verdade no digital.</p>
+      </div>
+      <div class="qcell">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10 h18 v12 h-11 l-7 5 v-5 h-0 z"/><path d="M16 26 v-1 M18 15 h16 v12 h-3 v5 l-6-5 h-7"/></svg></div>
+        <h4>Proximidade com a marca</h4>
+        <p>Acesso direto à equipe da EUBE e troca estratégica sobre criação.<br><br>Relação de longo prazo, com respeito ao seu tempo e à sua arte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PARA QUEM É ============ -->
+<section class="aqua">
+  <div class="wrap">
+    <span class="eyebrow">Para quem é o programa</span>
+    <div class="rule" style="background:rgba(98,21,19,.3)"></div>
+    <h2 class="h-sec">Para quem tem algo a dizer<span class="li">e quer construir algo maior.</span></h2>
+    <p class="p-sec">A gente não está procurando número de seguidores.<br>Procuramos criadores negros que:</p>
+    <div class="lista">
+      <ul>
+        <li><b>Criam com verdade.</b> Conteúdo autêntico sobre beleza, autocuidado, estilo de vida e identidade.</li>
+        <li><b>Querem proximidade.</b> Relação direta com uma marca que entende e valoriza a pele negra em alta performance.</li>
+        <li><b>Pensam em comunidade.</b> Acreditam que o futuro se constrói junto, e não sozinho.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMULÁRIO ================= -->
+<section class="form-sec dark" id="candidatura">
+  <div class="wrap">
+    <div class="form-head">
+      <span class="eyebrow">Candidatura · turma 01</span>
+      <h2 style="margin-top:18px">Sua voz constrói o nosso ecossistema.<span class="li">Inscreva-se.</span></h2>
+      <p>Bem-vinda ao EUCREATOR. A gente fica feliz com o seu interesse em co-criar com a EUBE.</p>
+      <p style="margin-top:12px">Este formulário foi desenhado para a gente conhecer a sua essência, o seu estilo de criação e como podemos construir um ecossistema forte junto. Tempo estimado de preenchimento: 5 a 8 minutos.</p>
+    </div>
+
+    <div class="form-card">
+      <div class="prog"><i id="bar"></i></div>
+      <div class="form-inner">
+
+        <!-- TELA 1 -->
+        <div class="tela on" data-t="1">
+          <div class="tela-h"><span class="n">Etapa 1 / 5</span></div>
+          <h3>Dados pessoais e contato</h3>
+          <p class="sub">Essencial para identificação e para a logística de envios.</p>
+          <div class="field"><label>Nome completo</label><input type="text" id="nome" placeholder="Como está no seu documento"></div>
+          <div class="row2">
+            <div class="field"><label>E-mail de contato principal</label><input type="email" id="email" placeholder="voce@email.com"></div>
+            <div class="field"><label>WhatsApp para contato direto</label><input type="tel" id="fone" placeholder="(71) 90000-0000"></div>
+          </div>
+          <div class="field" style="max-width:280px"><label>Data de nascimento</label><input type="text" id="nascimento" placeholder="DD/MM/AAAA"></div>
+          <div class="field"><label>Endereço completo para envios</label>
+            <textarea id="endereco" placeholder="Rua, número, complemento, bairro, cidade, estado e CEP"></textarea>
+            <div class="hint">Dados confidenciais, usados apenas para envio de kits e lançamentos.</div>
+          </div>
+          <div class="nav"><span></span><button class="cta" onclick="prox(1)">Continuar</button></div>
+          <div class="err" id="e1">Preenche nome, e-mail, WhatsApp, data de nascimento e endereço para continuar.</div>
+        </div>
+
+        <!-- TELA 2 -->
+        <div class="tela" data-t="2">
+          <div class="tela-h"><span class="n">Etapa 2 / 5</span></div>
+          <h3>Presença digital e perfil de conteúdo</h3>
+          <p class="sub">Para a gente mapear onde você atua e com que frequência.</p>
+          <div class="field"><label>Link do seu perfil principal</label><input type="text" id="perfil" placeholder="Instagram, TikTok, YouTube"></div>
+          <div class="field"><label>Outros perfis ou redes secundárias</label><input type="text" id="outros" placeholder="Opcional"></div>
+          <div class="field"><label>Em qual plataforma a sua comunidade mais se engaja com você</label>
+            <div class="opts two" data-name="plataforma">
+              <label class="opt"><input type="radio" name="plataforma" value="Instagram"> Instagram, Reels e Stories</label>
+              <label class="opt"><input type="radio" name="plataforma" value="TikTok"> TikTok</label>
+              <label class="opt"><input type="radio" name="plataforma" value="YouTube"> YouTube</label>
+              <label class="opt"><input type="radio" name="plataforma" value="Outra"> Outra</label>
+            </div>
+          </div>
+          <div class="field"><label>Qual a sua frequência média de publicação de conteúdo autoral</label>
+            <div class="opts two" data-name="freq">
+              <label class="opt"><input type="radio" name="freq" value="Diariamente"> Diariamente</label>
+              <label class="opt"><input type="radio" name="freq" value="3 a 5 vezes por semana"> 3 a 5 vezes por semana</label>
+              <label class="opt"><input type="radio" name="freq" value="1 a 2 vezes por semana"> 1 a 2 vezes por semana</label>
+              <label class="opt"><input type="radio" name="freq" value="Ocasionalmente"> Ocasionalmente, quando surge oportunidade</label>
+            </div>
+          </div>
+          <div class="field"><label>Quais são os temas centrais do seu perfil</label>
+            <div class="opts two" data-name="tema">
+              <label class="opt"><input type="checkbox" name="tema" value="Skincare"> Skincare e cuidados com a pele</label>
+              <label class="opt"><input type="checkbox" name="tema" value="Beleza"> Beleza, maquiagem e estética</label>
+              <label class="opt"><input type="checkbox" name="tema" value="Cabelo"> Cabelo crespo ou cacheado</label>
+              <label class="opt"><input type="checkbox" name="tema" value="Lifestyle"> Lifestyle, rotina e bem-estar</label>
+              <label class="opt"><input type="checkbox" name="tema" value="Moda"> Moda e personal stylist</label>
+              <label class="opt"><input type="checkbox" name="tema" value="Autoestima"> Autoestima, identidade, maternidade ou paternidade</label>
+            </div>
+            <div class="hint">Marque até 3.</div>
+            <input type="text" id="temaoutro" placeholder="Outro tema" style="margin-top:12px">
+          </div>
+          <div class="nav"><button class="btn-ghost" onclick="volta(2)">Voltar</button><button class="cta" onclick="prox(2)">Continuar</button></div>
+          <div class="err" id="e2">Informe o perfil principal, a plataforma, a frequência e até 3 temas.</div>
+        </div>
+
+        <!-- TELA 3 -->
+        <div class="tela" data-t="3">
+          <div class="tela-h"><span class="n">Etapa 3 / 5</span></div>
+          <h3>Portfólio e prova prática</h3>
+          <p class="sub">Mostre pra gente a sua capacidade de criação. Escolha a opção que se aplica ao seu momento.</p>
+          <div class="field"><label>Opção A. Você já cria conteúdo</label>
+            <input type="url" id="linkA" placeholder="Link do post, Reels, Shorts ou vídeo autoral">
+            <div class="hint">Escolha um trabalho recente do qual você se orgulha.</div>
+          </div>
+          <div class="field"><label>Opção B. Você ainda não publicou conteúdo de beleza ou skincare</label>
+            <input type="url" id="linkB" placeholder="Link do seu vídeo de 30s a 1min">
+            <div class="hint">Grave um vídeo curto mostrando como você apresentaria a EUBE, ou a sua rotina de cuidados com a pele. Pode subir no Google Drive, WeTransfer, TikTok privado ou YouTube não listado e colar o link aqui.</div>
+          </div>
+          <div class="dica">Não se preocupe com câmera profissional ou produção cara. A gente avalia a sua clareza ao falar, a sua estética natural e a sua autenticidade.</div>
+          <div class="nav"><button class="btn-ghost" onclick="volta(3)">Voltar</button><button class="cta" onclick="prox(3)">Continuar</button></div>
+          <div class="err" id="e3">Cole o link de uma das duas opções para continuar.</div>
+        </div>
+
+        <!-- TELA 4 -->
+        <div class="tela" data-t="4">
+          <div class="tela-h"><span class="n">Etapa 4 / 5</span></div>
+          <h3>Propósito e afinidade com a marca</h3>
+          <div class="field"><label>O que não pode faltar na sua rotina diária de cuidados</label>
+            <textarea id="rotina" style="min-height:80px"></textarea>
+          </div>
+          <div class="field"><label>Para você, o que significa fazer parte de um ecossistema focado em valorizar a pele negra</label>
+            <textarea id="significa"></textarea>
+          </div>
+          <div class="nav"><button class="btn-ghost" onclick="volta(4)">Voltar</button><button class="cta" onclick="prox(4)">Continuar</button></div>
+          <div class="err" id="e4">Responde as duas perguntas para continuar.</div>
+        </div>
+
+        <!-- TELA 5 -->
+        <div class="tela" data-t="5">
+          <div class="tela-h"><span class="n">Etapa 5 / 5</span></div>
+          <h3>Alinhamento profissional e disponibilidade</h3>
+          <p class="sub">Para alinhar expectativas desde o começo.</p>
+          <div class="field"><label>Você tem interesse e disponibilidade para</label>
+            <div class="opts" data-name="disp">
+              <label class="opt"><input type="checkbox" name="disp" value="Testar lançamentos"> Receber e testar novos produtos e lançamentos em primeira mão</label>
+              <label class="opt"><input type="checkbox" name="disp" value="Co-criação"> Participar de pesquisas de desenvolvimento e grupos de co-criação</label>
+              <label class="opt"><input type="checkbox" name="disp" value="Campanhas remuneradas"> Participar de campanhas de divulgação remuneradas ou comissionadas</label>
+              <label class="opt"><input type="checkbox" name="disp" value="Eventos"> Participar de eventos virtuais ou presenciais da marca</label>
+            </div>
+          </div>
+          <div class="field"><label>Você tem CNPJ ou emite nota fiscal para parcerias remuneradas</label>
+            <div class="opts" data-name="cnpj">
+              <label class="opt"><input type="radio" name="cnpj" value="Sim"> Sim, tenho MEI ou CNPJ ativo</label>
+              <label class="opt"><input type="radio" name="cnpj" value="Posso abrir"> Não tenho agora, mas posso emitir se necessário</label>
+              <label class="opt"><input type="radio" name="cnpj" value="Não"> Não tenho</label>
+            </div>
+            <div class="hint">Não ter CNPJ não elimina a sua candidatura.</div>
+          </div>
+          <div class="field"><label>Você já faz parcerias com outras marcas de beleza ou skincare</label>
+            <div class="opts" data-name="parcerias">
+              <label class="opt"><input type="radio" name="parcerias" value="Frequentemente"> Sim, frequentemente</label>
+              <label class="opt"><input type="radio" name="parcerias" value="Pontualmente"> Já fiz pontualmente</label>
+              <label class="opt"><input type="radio" name="parcerias" value="Nunca"> Nunca fiz, o EUCREATOR seria o primeiro</label>
+            </div>
+          </div>
+          <label class="consent" style="margin-top:26px"><input type="checkbox" id="c1"> Ao enviar esta candidatura, concordo que os dados fornecidos sejam usados exclusivamente pela equipe da EUBE para avaliação no programa EUCREATOR e para eventual contato comercial ou logístico.</label>
+          <p style="font-size:12.5px;font-weight:300;opacity:.65;line-height:1.6;margin-bottom:8px">A EUBE registra a data, a hora e o endereço de IP do seu aceite, como prova de consentimento, conforme a Política de Privacidade.</p>
+          <div class="nav"><button class="btn-ghost" onclick="volta(5)">Voltar</button><button class="cta" onclick="enviar()">Enviar minha candidatura</button></div>
+          <div class="err" id="e5">Responde as três perguntas e marque o aceite para enviar.</div>
+        </div>
+
+        <!-- TELA FINAL -->
+        <div class="tela" data-t="6">
+          <div class="done">
+            <h3>Candidatura recebida.</h3>
+            <p>A gente lê tudo à mão, uma por uma. A resposta chega no seu WhatsApp em até 10 dias, inclusive se for não. Enquanto isso, o melhor que você pode fazer é continuar criando do jeito que você já cria.</p>
+            <div class="debug" id="payload"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ================== ENDPOINT ==================
+   Trocar pela URL do Apps Script quando publicar:
+   const EUBE_ENDPOINT = "https://script.google.com/macros/s/SEU_ID/exec";
+============================================== */
+const EUBE_ENDPOINT = "";
+
+let eubeTela = 1;
+let eubeIP = 'não capturado';
+fetch('https://api.ipify.org?format=json').then(r=>r.json()).then(d=>{eubeIP=d.ip;}).catch(()=>{});
+let eubeAceiteEm = '';
+
+document.querySelectorAll('.opt input').forEach(i=>{
+  i.addEventListener('change',()=>{
+    const box=i.closest('.opts');
+    if(i.type==='radio'){box.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));}
+    if(i.type==='checkbox' && i.name==='tema'){
+      const marcados=[...document.querySelectorAll('input[name="tema"]:checked')];
+      if(marcados.length>3){i.checked=false;}
+    }
+    i.closest('.opt').classList.toggle('sel', i.checked);
+  });
+});
+
+document.getElementById('c1').addEventListener('change',function(){
+  eubeAceiteEm = this.checked ? new Date().toISOString() : '';
+});
+
+function val(id){return document.getElementById(id).value.trim();}
+function eubeVal(n){const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:'';}
+function eubeMulti(n){return [...document.querySelectorAll('input[name="'+n+'"]:checked')].map(e=>e.value).join(', ');}
+function erro(n,on){document.getElementById('e'+n).classList.toggle('on',on);}
+function mostra(n){
+  document.querySelectorAll('.tela').forEach(t=>t.classList.remove('on'));
+  document.querySelector('.tela[data-t="'+n+'"]').classList.add('on');
+  document.getElementById('bar').style.width=(n*20)+'%';
+  document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
+  eubeTela=n;
+}
+function volta(n){mostra(n-1);}
+
+function prox(n){
+  if(n===1){
+    const ok = val('nome').split(' ').length>1 && /@/.test(val('email')) && val('fone').length>=10 && val('nascimento').length>=8 && val('endereco').length>=12;
+    if(!ok){erro(1,true);return;} erro(1,false);
+  }
+  if(n===2){
+    const ok = val('perfil') && eubeVal('plataforma') && eubeVal('freq') && (eubeMulti('tema')||val('temaoutro'));
+    if(!ok){erro(2,true);return;} erro(2,false);
+  }
+  if(n===3){
+    const ok = val('linkA')||val('linkB');
+    if(!ok){erro(3,true);return;} erro(3,false);
+  }
+  if(n===4){
+    const ok = val('rotina') && val('significa');
+    if(!ok){erro(4,true);return;} erro(4,false);
+  }
+  mostra(n+1);
+}
+
+/* ============ SCORE DE TRIAGEM ============ */
+function eubeScore(d){
+  let s=0;
+  const freq={'Diariamente':20,'3 a 5 vezes por semana':18,'1 a 2 vezes por semana':12,'Ocasionalmente':5};
+  s += freq[d.frequencia]||0;
+  const temas=d.temas||'';
+  if(/Skincare/.test(temas)) s+=14;
+  if(/Beleza|Autoestima/.test(temas)) s+=8;
+  if(/Cabelo|Lifestyle/.test(temas)) s+=4;
+  if(d.linkPortfolio) s+=16; else if(d.linkVideo) s+=12;
+  const disp=(d.disponibilidade||'').split(', ').filter(Boolean).length;
+  s += Math.min(disp*4,16);
+  const parc={'Frequentemente':6,'Pontualmente':8,'Nunca':6};
+  s += parc[d.parcerias]||0;
+  if(d.cnpj==='Sim') s+=4; else if(d.cnpj==='Posso abrir') s+=2;
+  const texto=(d.significa||'').length+(d.rotina||'').length;
+  if(texto>300) s+=10; else if(texto>140) s+=6; else s+=2;
+  return Math.min(s,100);
+}
+function eubeFaixa(s){if(s>=70)return 'A · chamar para conversa';if(s>=50)return 'B · lista de espera';return 'C · arquivo';}
+
+function enviar(){
+  const ok = eubeMulti('disp') && eubeVal('cnpj') && eubeVal('parcerias') && document.getElementById('c1').checked;
+  if(!ok){erro(5,true);return;} erro(5,false);
+  const agora=new Date();
+  const d={
+    timestamp:agora.toISOString(),
+    dataHoraLocal:agora.toLocaleString('pt-BR',{timeZone:'America/Bahia'}),
+    ip:eubeIP, fusoHorario:Intl.DateTimeFormat().resolvedOptions().timeZone,
+    navegador:navigator.userAgent,
+    nome:val('nome'), email:val('email'), whatsapp:val('fone'),
+    nascimento:val('nascimento'), endereco:val('endereco'),
+    perfilPrincipal:val('perfil'), outrosPerfis:val('outros'),
+    plataforma:eubeVal('plataforma'), frequencia:eubeVal('freq'),
+    temas:eubeMulti('tema'), temaOutro:val('temaoutro'),
+    linkPortfolio:val('linkA'), linkVideo:val('linkB'),
+    rotina:val('rotina'), significa:val('significa'),
+    disponibilidade:eubeMulti('disp'), cnpj:eubeVal('cnpj'), parcerias:eubeVal('parcerias'),
+    aceitePrivacidade:'sim', aceiteEm:eubeAceiteEm||agora.toISOString()
+  };
+  d.score=eubeScore(d);
+  d.triagem=eubeFaixa(d.score);
+  if(EUBE_ENDPOINT){
+    fetch(EUBE_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)});
+  }
+  document.getElementById('payload').textContent='SIMULAÇÃO. Isto é o que vai para o Google Sheets:\n\n'+JSON.stringify(d,null,2);
+  mostra(6);
+  document.getElementById('bar').style.width='100%';
+}
+</script>
+</body>
+</html>
