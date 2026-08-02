@@ -490,7 +490,9 @@ function mostra(n){
   document.getElementById('bar').style.width=(n*20)+'%';
   eubeTela=n;
   if(window.self!==window.top){
-    parent.postMessage({eube:'scroll'},'*');
+    const card=document.querySelector('.form-card');
+    const topo=card.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
+    parent.postMessage({eube:'scroll',offset:Math.round(topo)},'*');
     setTimeout(eubeAltura,120);
   }else{
     document.querySelector('.form-card').scrollIntoView({behavior:'smooth',block:'start'});
